@@ -11,12 +11,12 @@ module.exports = {
             test.getFlux(res);
         });
 
-        app.post('/test/flux/add/:url/:tag/', function(req, res) {
-            test.postFlux(req.params.url, req.params.tag, res);
+        app.post('/test/flux/add/', function(req, res) {
+            test.postFlux(req.body.url, req.body.tag, res);
         });
 
-        app.delete('/test/flux/delete/:url/', function(req, res) {
-            test.deleteFlux(req.params.url, res);
+        app.delete('/test/flux/delete/', function(req, res) {
+            test.deleteFlux(req.body.url, res);
         });
     }
 };
