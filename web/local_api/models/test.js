@@ -1,66 +1,224 @@
 function Test() {
 
 	// Test : Getting user connection
-	this.getUser = function(res) {
-			res.json({
-				"user": [
-					{
-						"name": {
-							"first": "TestUser_first",
-							"last": "TestUser_last"
-						},
-						"email": "romain.hoogmoed@example.com",
-						"login": {
-							"username": "TestUser",
-							"password": "rssfeed",
-							"salt": "UGtRFz4N",
-							"md5": "6d83a8c084731ee73eb5f9398b923183",
-							"sha1": "cb21097d8c430f2716538e365447910d90476f6e",
-							"sha256": "5a9b09c86195b8d8b01ee219d7d9794e2abb6641a2351850c49c309f1fc204a0"
-						}
-					}
-				]
-			});
+	this.postUserLogin = function(username, password, res) {
+		res.status(201).json(
+			{
+				"username": username,
+				"password": password
+			}
+		);
 	};
 
-	// Test : Getting all flux
-	this.getFlux = function(res) {
-		res.json({
-			"status": "ok",
-			"feed": {
-				"url": "http://www.theverge.com/rss/full.xml",
-				"title": "The Verge - All Posts",
-				"link": "http://www.theverge.com/",
-				"author": "",
-				"description": "",
-				"image": "https://cdn3.vox-cdn.com/community_logos/34086/verge-fv.png"
-			},
-			"items": [
+	// Test : Post user inscription
+	this.postUserRegister = function(username, password, res) {
+		res.status(201).json(
+			{
+				"username": username,
+				"password": password
+			}
+		);
+	};
+
+	// Test : Getting all flux (feeds) listed
+	this.getAllFluxListed = function(res) {
+		res.status(201).json(
+			[
 				{
-					"title": "Zuckerberg to Trump: ‘Keep our doors open to refugees’",
-					"pubDate": "2017-01-27 23:09:14",
-					"link": "http://www.theverge.com/2017/1/27/14420662/zuckerberg-immigration-refugees-trump-executive-orders",
-					"guid": "http://www.theverge.com/2017/1/27/14420662/zuckerberg-immigration-refugees-trump-executive-orders",
-					"author": "Casey Newton",
-					"thumbnail": "",
-					"description": "Mark Zuckerberg pushed back on President Donald Trump’s immigration initiatives today, protesting his call for local law enforcement to enforce immigration laws and his produced reduction in the number of refugees. “Like many of you, I’m concerned about the impact of the recent executive orders signed by President Trump,”",
-					"content": "",
-					"enclosure": [
-					],
-					"categories": [
-					]
-				}]
-		});
+					"id": 1,
+					"name": "BFM news",
+					"tags": "cool",
+					"url": "http://www.bfmtv.com/rss/info/flux-rss/flux-toutes-les-actualites/"
+				},
+				{
+					"id": 2,
+					"name": "BFM news",
+					"tags": "pas cool",
+					"url": "http://www.bfmtv.com/rss/info/flux-rss/flux-toutes-les-actualites/"
+				}
+			]
+		);
 	};
 
-	// Test : Posting one flux with a tag
-	this.postFlux = function(url, tag, res) {
-		res.status(200).send("Flux : " + (url).toString()+ " added with tag <" + (tag).toString() + ">.\n");
+	// Test : Getting all flux (feeds)
+	this.getAllFlux = function(res) {
+		res.status(201).json(
+			[
+				{
+					"flux_title": "Flux toutes les actualités - actualites",
+					"flux_tag" : "cool",
+					"flux_link": "http://www.bfmtv.com/info/flux-rss/flux-toutes-les-actualites/",
+					"flux_description": "BFMTV.COM",
+					"flux_language": "fr",
+					"flux_copyright": "Copyright BFMTV",
+					"flux_image": {
+						"title": "Flux toutes les actualités - actualites",
+						"url": "http://static.bfmtv.com/ressources/img/logo/logoportail.png",
+						"link": "http://www.bfmtv.com/info/flux-rss/flux-toutes-les-actualites/"
+					},
+					"title": "Le décret de Trump sur l'immigration peut-il être appliqué?",
+					"description": "Donald Trump a suspendu, vendredi, un programme d'accueil des réfugiés et a interdit l'entrée de ressortissants en provenance de sept pays du Moyen-Orient. Mais selon un spécialiste cité par le New York Times, ce décret ne respecte pas les lois migratoires du pays.",
+					"link": "http://www.bfmtv.com/international/le-decret-de-trump-sur-l-immigration-peut-il-etre-applique-1091696.html",
+					"pub_date": "Sat, 28 Jan 2017 01:30:33 +0100",
+					"guid": {
+						"@isPermaLink": "false",
+						"#text": "http://www.bfmtv.com/international/le-decret-de-trump-sur-l-immigration-peut-il-etre-applique-1091696.html"
+					},
+					"enclosure": {
+						"@url": "http://img.bfmtv.com/i/0/0/bda/58d8f0739e0d69c017af876c8ba86.jpeg",
+						"@length": "0"
+					}
+				},
+				{
+					"flux_title": "Flux toutes les actualités - actualites",
+					"flux_tag" : "pas cool",
+					"flux_link": "http://www.bfmtv.com/info/flux-rss/flux-toutes-les-actualites/",
+					"flux_description": "BFMTV.COM",
+					"flux_language": "fr",
+					"flux_copyright": "Copyright BFMTV",
+					"flux_image": {
+						"title": "Flux toutes les actualités - actualites",
+						"url": "http://static.bfmtv.com/ressources/img/logo/logoportail.png",
+						"link": "http://www.bfmtv.com/info/flux-rss/flux-toutes-les-actualites/"
+					},
+					"title": "Jean michel musique mort",
+					"description": "Jean michel musique est mort après avoir mangé une compte andros, quel con.",
+					"link": "http://www.bfmtv.com/international/le-decret-de-trump-sur-l-immigration-peut-il-etre-applique-1091696.html",
+					"pub_date": "Sat, 28 Jan 2017 01:30:33 +0100",
+					"guid": {
+						"@isPermaLink": "false",
+						"#text": "http://www.bfmtv.com/international/le-decret-de-trump-sur-l-immigration-peut-il-etre-applique-1091696.html"
+					},
+					"enclosure": {
+						"@url": "http://img.bfmtv.com/i/0/0/bda/58d8f0739e0d69c017af876c8ba86.jpeg",
+						"@length": "0"
+					}
+				},
+				{
+					"flux_title": "Flux toutes les actualités - actualites",
+					"flux_tag" : "cool",
+					"flux_link": "http://www.bfmtv.com/info/flux-rss/flux-toutes-les-actualites/",
+					"flux_description": "BFMTV.COM",
+					"flux_language": "fr",
+					"flux_copyright": "Copyright BFMTV",
+					"flux_image": {
+						"title": "Flux toutes les actualités - actualites",
+						"url": "http://static.bfmtv.com/ressources/img/logo/logoportail.png",
+						"link": "http://www.bfmtv.com/info/flux-rss/flux-toutes-les-actualites/"
+					},
+					"title": "Le décret de Trump sur l'immigration peut-il être appliqué?",
+					"description": "Donald Trump a suspendu, vendredi, un programme d'accueil des réfugiés et a interdit l'entrée de ressortissants en provenance de sept pays du Moyen-Orient. Mais selon un spécialiste cité par le New York Times, ce décret ne respecte pas les lois migratoires du pays.",
+					"link": "http://www.bfmtv.com/international/le-decret-de-trump-sur-l-immigration-peut-il-etre-applique-1091696.html",
+					"pub_date": "Sat, 28 Jan 2017 01:30:33 +0100",
+					"guid": {
+						"@isPermaLink": "false",
+						"#text": "http://www.bfmtv.com/international/le-decret-de-trump-sur-l-immigration-peut-il-etre-applique-1091696.html"
+					},
+					"enclosure": {
+						"@url": "http://img.bfmtv.com/i/0/0/bda/58d8f0739e0d69c017af876c8ba86.jpeg",
+						"@length": "0"
+					}
+				},
+				{
+					"flux_title": "Flux toutes les actualités - actualites",
+					"flux_tag" : "pas cool",
+					"flux_link": "http://www.bfmtv.com/info/flux-rss/flux-toutes-les-actualites/",
+					"flux_description": "BFMTV.COM",
+					"flux_language": "fr",
+					"flux_copyright": "Copyright BFMTV",
+					"flux_image": {
+						"title": "Flux toutes les actualités - actualites",
+						"url": "http://static.bfmtv.com/ressources/img/logo/logoportail.png",
+						"link": "http://www.bfmtv.com/info/flux-rss/flux-toutes-les-actualites/"
+					},
+					"title": "Jean michel musique mort",
+					"description": "Jean michel musique est mort après avoir mangé une compte andros, quel con.",
+					"link": "http://www.bfmtv.com/international/le-decret-de-trump-sur-l-immigration-peut-il-etre-applique-1091696.html",
+					"pub_date": "Sat, 28 Jan 2017 01:30:33 +0100",
+					"guid": {
+						"@isPermaLink": "false",
+						"#text": "http://www.bfmtv.com/international/le-decret-de-trump-sur-l-immigration-peut-il-etre-applique-1091696.html"
+					},
+					"enclosure": {
+						"@url": "http://img.bfmtv.com/i/0/0/bda/58d8f0739e0d69c017af876c8ba86.jpeg",
+						"@length": "0"
+					}
+				},
+				{
+					"flux_title": "Flux toutes les actualités - actualites",
+					"flux_tag" : "cool",
+					"flux_link": "http://www.bfmtv.com/info/flux-rss/flux-toutes-les-actualites/",
+					"flux_description": "BFMTV.COM",
+					"flux_language": "fr",
+					"flux_copyright": "Copyright BFMTV",
+					"flux_image": {
+						"title": "Flux toutes les actualités - actualites",
+						"url": "http://static.bfmtv.com/ressources/img/logo/logoportail.png",
+						"link": "http://www.bfmtv.com/info/flux-rss/flux-toutes-les-actualites/"
+					},
+					"title": "Le décret de Trump sur l'immigration peut-il être appliqué?",
+					"description": "Donald Trump a suspendu, vendredi, un programme d'accueil des réfugiés et a interdit l'entrée de ressortissants en provenance de sept pays du Moyen-Orient. Mais selon un spécialiste cité par le New York Times, ce décret ne respecte pas les lois migratoires du pays.",
+					"link": "http://www.bfmtv.com/international/le-decret-de-trump-sur-l-immigration-peut-il-etre-applique-1091696.html",
+					"pub_date": "Sat, 28 Jan 2017 01:30:33 +0100",
+					"guid": {
+						"@isPermaLink": "false",
+						"#text": "http://www.bfmtv.com/international/le-decret-de-trump-sur-l-immigration-peut-il-etre-applique-1091696.html"
+					},
+					"enclosure": {
+						"@url": "http://img.bfmtv.com/i/0/0/bda/58d8f0739e0d69c017af876c8ba86.jpeg",
+						"@length": "0"
+					}
+				},
+				{
+					"flux_title": "Flux toutes les actualités - actualites",
+					"flux_tag" : "pas cool",
+					"flux_link": "http://www.bfmtv.com/info/flux-rss/flux-toutes-les-actualites/",
+					"flux_description": "BFMTV.COM",
+					"flux_language": "fr",
+					"flux_copyright": "Copyright BFMTV",
+					"flux_image": {
+						"title": "Flux toutes les actualités - actualites",
+						"url": "http://static.bfmtv.com/ressources/img/logo/logoportail.png",
+						"link": "http://www.bfmtv.com/info/flux-rss/flux-toutes-les-actualites/"
+					},
+					"title": "Jean michel musique mort",
+					"description": "Jean michel musique est mort après avoir mangé une compte andros, quel con.",
+					"link": "http://www.bfmtv.com/international/le-decret-de-trump-sur-l-immigration-peut-il-etre-applique-1091696.html",
+					"pub_date": "Sat, 28 Jan 2017 01:30:33 +0100",
+					"guid": {
+						"@isPermaLink": "false",
+						"#text": "http://www.bfmtv.com/international/le-decret-de-trump-sur-l-immigration-peut-il-etre-applique-1091696.html"
+					},
+					"enclosure": {
+						"@url": "http://img.bfmtv.com/i/0/0/bda/58d8f0739e0d69c017af876c8ba86.jpeg",
+						"@length": "0"
+					}
+				}
+			]
+		);
 	};
 
-	// Test : Deleting one flux with a tag
-	this.deleteFlux = function(url, res) {
-		res.send({status: 200, message: 'Flux : ' + (url).toString() + ' is deleted.'});
+	// Test : Getting all tags
+	this.getAllTags = function(res) {
+		res.status(201).json(
+			[
+				"cool",
+				"pas cool",
+				"oklm"
+			]
+		);
+	};
+
+	// Test : Posting one flux
+	this.postFlux = function(data, res) {
+		res.status(201).json(
+			data
+		);
+	};
+
+	// Test : Deleting one flux with a id
+	this.deleteFlux = function(id, res) {
+		res.send({status: 204, message: 'Flux_id : ' + (id).toString() + ' is deleted.'});
 	};
 }
 

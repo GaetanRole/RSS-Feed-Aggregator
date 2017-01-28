@@ -3,7 +3,7 @@ var express = require('express');
 var bodyparser = require('body-parser');
 
 /* Local modules */
-var connection = require('./connection');
+//var connection = require('./connection');
 var routes = require('./routes');
 
 /* Init express module */
@@ -15,5 +15,6 @@ app.use(bodyparser.json());
 routes.configure(app);
 
 var server = app.listen(8000, function() {
-  console.log('Server listening on port : ' + server.address().port);
+  console.log('RFA - API TEST');
+  console.log('API Server listening on port : ' + server.address().port);
 });

@@ -4,7 +4,7 @@ HOST: http://rssfeedaggregator.apiblueprint.org/
 # rssfeedaggregator
 
 ## Register [/login]
-
+## REGISTER POST /register
 ### Register a user [POST]
 
 + Request (application/json)
@@ -78,7 +78,7 @@ To add a flux to your rss feed
 
 ## Rss feeds collection [/feeds/sync{?last_sync}]
 
-### Sync the rss feed [POST]
+### Sync the rss feed [GET]
 
 + Parameters
     + last_sync (optional) - datetime of last synchro (timestamp in milliseconds)
@@ -93,6 +93,7 @@ To add a flux to your rss feed
         [
             {
                 "flux_title": "Flux toutes les actualités - actualites",
+                "flux_tag" : "Coucou"
                 "flux_link": "http://www.bfmtv.com/info/flux-rss/flux-toutes-les-actualites/",
                 "flux_description": "BFMTV.COM",
                 "flux_language": "fr",

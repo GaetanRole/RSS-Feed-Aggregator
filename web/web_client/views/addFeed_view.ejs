@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>RSS Feed Aggregator - Home</title>
+    <title>RSS Feed Aggregator - Add a feed</title>
 
     <meta name="description" content="RFA - Web client interacting with API" />
     <meta name="keywords" content="RFA - Web Client" />
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/home_view.css"  />
+    <link rel="stylesheet" href="/css/feeds_view.css"  />
 
     <!-- Custom Fonts -->
     <link rel="stylesheet" type="text/css" href="/font/css/font-awesome.min.css" >
@@ -53,7 +53,7 @@
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
-                <li class="active">
+                <li>
                     <a href="/home"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                 </li>
                 <li>
@@ -62,7 +62,7 @@
                 <li>
                     <a href="/feeds"><i class="fa fa-fw fa-rss"></i> All Feeds Updated</a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="/add"><i class="fa fa-fw fa-plus"></i> Add a Feed</a>
                 </li>
                 <hr />
@@ -86,11 +86,11 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Dashboard <small>Overview</small>
+                        Add <small>Add a Feed Overview</small>
                     </h1>
                     <ol class="breadcrumb">
                         <li class="active">
-                            <i class="fa fa-dashboard"></i> Dashboard
+                            <i class="fa fa-rss"></i> Add a feed
                         </li>
                     </ol>
                 </div>
@@ -101,61 +101,33 @@
                 <div class="col-lg-12">
                     <div class="alert alert-info alert-dismissable">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <i class="fa fa-info-circle"></i>  Hi, <strong><%= username %></strong> It's a pleasure to see you, let's check out your RSS Feeds !
+                        <i class="fa fa-info-circle"></i><strong> <%= username %></strong> Let's add your a RSS Feed !
                     </div>
                 </div>
             </div>
             <!-- /.row -->
 
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <br>
-                                    <i class="fa fa-rss fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div>Total number of RSS Feeds</div>
-                                    <hr />
-                                    <div style="font-size: 42px;"><%= numberFeeds %></div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="/manage">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Feeds Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
+            <div class="form-group">
+                <form method="post" action="" class="form-group" enctype="multipart/form-data">
+                    <span class="col-sm-4">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Entrez le nom du flux" />
+                    </span>
+                    <span class="col-sm-4">
+                        <input type="text" class="form-control" id="tag" name="tag" placeholder="Entrez le tag" />
+                    </span>
+                    <span class="col-sm-4">
+                        <input type="text" class="form-control" id="url" name="url" placeholder="Entrez l'URL du flux" />
+                    </span>
+                    <br>
+                    <button type="submit" class="btn btn-sm btn-info" style="margin-top: 30px; margin-left: auto; margin-right: auto; display: block;" value="Add">Add this Feed</button>
+                </form>
+            </div>
+            <div>
+                <%if (errorHandler) { %>
+                <div class="alert alert-danger">
+                    <strong>Warning !</strong> <%= errorHandler %>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-danger">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <br>
-                                    <i class="fa fa-clock-o fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div>Last RSS feed posted</div>
-                                    <hr />
-                                    <div><b><%= lastFeed.name %></b> <br><a href="<%=lastFeed.url%>" style="font-size: 12px;"><%=lastFeed.url%></a></div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="/feeds">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Feeds Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+                <% } %>
             </div>
             <!-- /.row -->
 

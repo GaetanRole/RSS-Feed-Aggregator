@@ -18,12 +18,12 @@ body {
 .form {
     position: relative;
     z-index: 1;
-    background: rgba(255, 255, 255, 0.86);
+    background: rgba(0, 0, 0, 0.55);
     max-width: 360px;
     margin: 0 auto 100px;
     padding: 45px;
     text-align: center;
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.05);
 }
 .form input {
     outline: 0;
@@ -54,11 +54,11 @@ body {
 }
 .form .message {
     margin: 15px 0 0;
-    color:  #1D3F50;
+    color:  white;
     font-size: 12px;
 }
 .form .message a {
-    color: rgba(191, 73, 22, 0.9);
+    color: rgb(255, 125, 26);
     text-decoration: none;
 }
 .form .register-form {

@@ -14,6 +14,9 @@
     <!-- Favicon -->
     <link rel="icon" href="/img/rss.ico" />
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/connection_view.css" />
 
@@ -24,7 +27,12 @@
     <img style="display: block; margin: 0 auto; " src="/img/rss.png" width="70" height="70"/>
     <br><br>
     <div class="form">
-        <form class="login-form" action="/inscription" method="post" enctype="multipart/form-data">
+        <%if (errorHandler) { %>
+        <div class="alert alert-danger">
+            <strong>Warning !</strong> <%= errorHandler %>
+        </div>
+        <% } %>
+        <form class="login-form" action="" method="post" enctype="multipart/form-data">
             <input type="text" id="name" name="name" placeholder="Name" />
             <br />
             <input type="password" id="password" name="password" placeholder="Password" />

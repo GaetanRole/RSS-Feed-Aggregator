@@ -4,21 +4,22 @@
   "description": "Simple web client (using Node.js, Express)",
   "author": "Gaetan Role",
   "dependencies": {
-    "express": "4.8.*",
-    "serve-favicon": "2",
-    "morgan": "1.3.*",
-    "method-override":"*",
     "body-parser": "1.8",
+    "ejs": "*",
     "errorhandler": "*",
+    "express": "4.8.*",
     "express-session": "*",
+    "method-override": "*",
+    "morgan": "1.3.*",
     "multer": "0.1.*",
-    "ejs":"*"
+    "request": "^2.79.0",
+    "serve-favicon": "2"
   },
   "main": "server.js",
   "devDependencies": {},
   "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "start": "node server_router.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server_router.js"
   },
   "repository": {
     "type": "git",

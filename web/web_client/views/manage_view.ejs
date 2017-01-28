@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>RSS Feed Aggregator - Home</title>
+    <title>RSS Feed Aggregator - Manage feeds</title>
 
     <meta name="description" content="RFA - Web client interacting with API" />
     <meta name="keywords" content="RFA - Web Client" />
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/home_view.css"  />
+    <link rel="stylesheet" href="/css/feeds_view.css"  />
 
     <!-- Custom Fonts -->
     <link rel="stylesheet" type="text/css" href="/font/css/font-awesome.min.css" >
@@ -53,10 +53,10 @@
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
-                <li class="active">
+                <li>
                     <a href="/home"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="/manage"><i class="fa fa-fw fa-cog"></i> Manage Feeds</a>
                 </li>
                 <li>
@@ -86,11 +86,11 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Dashboard <small>Overview</small>
+                        Feeds Manager <small>All Flux Overview</small>
                     </h1>
                     <ol class="breadcrumb">
                         <li class="active">
-                            <i class="fa fa-dashboard"></i> Dashboard
+                            <i class="fa fa-cog"></i> Manager
                         </li>
                     </ol>
                 </div>
@@ -101,64 +101,24 @@
                 <div class="col-lg-12">
                     <div class="alert alert-info alert-dismissable">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <i class="fa fa-info-circle"></i>  Hi, <strong><%= username %></strong> It's a pleasure to see you, let's check out your RSS Feeds !
+                        <i class="fa fa-info-circle"></i><strong> <%= username %></strong> Let's manage your RSS Feeds !
                     </div>
                 </div>
             </div>
             <!-- /.row -->
-
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <br>
-                                    <i class="fa fa-rss fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div>Total number of RSS Feeds</div>
-                                    <hr />
-                                    <div style="font-size: 42px;"><%= numberFeeds %></div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="/manage">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Feeds Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-danger">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <br>
-                                    <i class="fa fa-clock-o fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div>Last RSS feed posted</div>
-                                    <hr />
-                                    <div><b><%= lastFeed.name %></b> <br><a href="<%=lastFeed.url%>" style="font-size: 12px;"><%=lastFeed.url%></a></div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="/feeds">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Feeds Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+            <div>
+                <ul class="list-group">
+                    <% jsonObj.forEach(function(feed) { %>
+                    <form method="POST" action="/manage?id=<%=feed.id%>&_method=DELETE">
+                        <li class="list-group-item">RSS Name : <%= feed.name %> <br> URL : <a href="<%=feed.url%>"><%=feed.url%></a>
+                            &nbsp;&nbsp;<button class="btn btn-xs btn-danger">Delete this feed</button>
+                        </li>
+                    </form>
+                    <% }); %>
+                </ul>
             </div>
-            <!-- /.row -->
 
+            <!-- /.row -->
         </div>
         <!-- /.container-fluid -->
     </div>
