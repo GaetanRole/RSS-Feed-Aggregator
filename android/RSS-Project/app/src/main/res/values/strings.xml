@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">RSS-Project</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_login">Login</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="error_incorrect_credentials">Login and/or password incorrect(s)</string>
+    <string name="error_field_required">This field is required</string>
+</resources>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_feed"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="olivier.sturbois.rss_project.AddFeedActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/name_text_view"
+            android:layout_weight="0"
+            android:text="Insert the name of the new RSS feed"
+            android:textSize="18sp"
+            android:textStyle="normal|italic" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:ems="10"
+            android:layout_marginTop="10dp"
+            android:id="@+id/name_text_edit"
+            android:layout_weight="0"
+            android:hint="Name" />
+
+        <TextView
+            android:text="Insert the URL of the RSS feed you want to follow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/url_text_view"
+            android:layout_marginTop="50dp"
+
+            android:layout_weight="0"
+            android:textStyle="normal|italic"
+            android:textSize="18sp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine|textUri"
+            android:ems="10"
+            android:layout_weight="0"
+            android:layout_marginTop="10dp"
+            android:hint="URL"
+            android:id="@+id/url_text_edit"
+            android:maxLines="5"
+            android:maxLength="500" />
+
+        <TextView
+            android:text="Insert a tag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_marginTop="50dp"
+            android:textStyle="normal|italic"
+            android:textSize="18sp"
+            android:id="@+id/tag_text_view" />
+
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_marginTop="10dp"
+            android:hint="Tag (optional)"
+            android:id="@+id/tag_autocomplete_text_view" />
+
+        <Button
+            android:text="Add new feed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_marginTop="50dp"
+            android:background="@android:color/holo_green_dark"
+            android:id="@+id/add_feed_button" />
+
+    </LinearLayout>
+
+</RelativeLayout>

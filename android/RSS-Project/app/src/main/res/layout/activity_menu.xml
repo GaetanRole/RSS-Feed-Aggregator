@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_menu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="olivier.sturbois.rss_project.MenuActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/menu_scroll_view">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:id="@+id/buttons_layout">
+
+                <Button
+                    android:text="Add a RSS feed"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/add_rss_button"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:background="@android:color/holo_green_dark"
+                    android:layout_marginRight="5dp" />
+
+                <Button
+                    android:text="Logout"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/logout_button"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:background="@android:color/holo_red_light"
+                    android:layout_marginLeft="5dp"
+                    android:rotationX="0"
+                    android:rotationY="0" />
+
+            </LinearLayout>
+
+            <TextView
+                android:text="Select a tag :"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tag_textView"
+                android:textSize="18sp"
+                android:textStyle="normal|italic"
+                android:layout_marginTop="50dp" />
+
+            <Spinner
+                android:id="@+id/tag_spinner"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:spinnerMode="dialog"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical|center_horizontal|start"
+                android:textAlignment="center"
+                android:layout_weight="0.57" />
+
+            <TextView
+                android:text="Your RSS feeds :"
+                android:layout_width="match_parent"
+                android:id="@+id/rss_textView"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginTop="50dp"
+                android:textStyle="normal|italic" />
+
+            <ListView
+                android:layout_width="match_parent"
+                android:id="@+id/rss_listView"
+                android:layout_marginTop="10dp"
+                android:layout_height="306dp" />
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
