@@ -1,0 +1,150 @@
+FORMAT: 1A
+HOST: http://rssfeedaggregator.apiblueprint.org/
+
+# rssfeedaggregator
+
+## Register [/login]
+
+### Register a user [POST]
+
++ Request (application/json)
+
+        {
+            "username": "cctoa",
+            "password": "ttrobo"
+        }
+
+
++ Response 201 (application/json)
+
+        {
+            "username": "cctoa",
+            "password": "ttrobo"
+        }
+
+## Rss feeds collection [/feeds]
+
+### Retrieve all flux [GET]
+
+To list all fields
+
++ Request (application/json)
+    + Headers
+
+            Authorization: Basic base64(cctoa:ttrobo)
+
++ Response 201 (application/json)
+
+        [
+            {
+                "id": 1,
+                "name": "BFM news",
+                "tags": "cool",
+                "url": "http://www.bfmtv.com/rss/info/flux-rss/flux-toutes-les-actualites/"
+            },
+            {
+                "id": 2,
+                "name": "BFM news",
+                "tags": "cool",
+                "url": "http://www.bfmtv.com/rss/info/flux-rss/flux-toutes-les-actualites/"
+            }
+        ]
+
+### Add a new flux [POST]
+
+To add a flux to your rss feed
+
++ Request (application/json)
+    + Headers
+
+            Authorization: Basic base64(cctoa:ttrobo)
+
+    + Body
+
+            {
+                "name": "BFM news",
+                "tags": "cool",
+                "url": "http://www.bfmtv.com/rss/info/flux-rss/flux-toutes-les-actualites/"
+            }
+
++ Response 201 (application/json)
+
+        {
+            "id": 1,
+            "name": "BFM news",
+            "tags": "cool",
+            "url": "http://www.bfmtv.com/rss/info/flux-rss/flux-toutes-les-actualites/"
+        }
+
+## Rss feeds collection [/feeds/sync{?last_sync}]
+
+### Sync the rss feed [POST]
+
++ Parameters
+    + last_sync (optional) - datetime of last synchro (timestamp in milliseconds)
+
++ Request (application/json)
+    + Headers
+
+            Authorization: Basic base64(cctoa:ttrobo)
+
++ Response 201 (application/json)
+
+        [
+            {
+                "flux_title": "Flux toutes les actualités - actualites",
+                "flux_link": "http://www.bfmtv.com/info/flux-rss/flux-toutes-les-actualites/",
+                "flux_description": "BFMTV.COM",
+                "flux_language": "fr",
+                "flux_copyright": "Copyright BFMTV",
+                "flux_image": {
+                    "title": "Flux toutes les actualités - actualites",
+                    "url": "http://static.bfmtv.com/ressources/img/logo/logoportail.png",
+                    "link": "http://www.bfmtv.com/info/flux-rss/flux-toutes-les-actualites/"
+                },
+                "title": "Le décret de Trump sur l'immigration peut-il être appliqué?",
+                "description": "Donald Trump a suspendu, vendredi, un programme d'accueil des réfugiés et a interdit l'entrée de ressortissants en provenance de sept pays du Moyen-Orient. Mais selon un spécialiste cité par le New York Times, ce décret ne respecte pas les lois migratoires du pays.",
+                "link": "http://www.bfmtv.com/international/le-decret-de-trump-sur-l-immigration-peut-il-etre-applique-1091696.html",
+                "pub_date": "Sat, 28 Jan 2017 01:30:33 +0100",
+                "guid": {
+                    "@isPermaLink": "false",
+                    "#text": "http://www.bfmtv.com/international/le-decret-de-trump-sur-l-immigration-peut-il-etre-applique-1091696.html"
+                },
+                "enclosure": {
+                    "@url": "http://img.bfmtv.com/i/0/0/bda/58d8f0739e0d69c017af876c8ba86.jpeg",
+                    "@length": "0"
+                }
+            }
+        ]
+
+
+## Rss feed collection [/feeds/{id}]
+
+### Remove a flux [DELETE]
+
+Delete a flux
+
++ Request (application/json)
+    + Headers
+
+            Authorization: Basic base64(cctoa:ttrobo)
+
++ Response 204
+
+
+## Tags collection [/tags]
+
+### Get all tags
+
+Retrieve tags
+
++ Request (application/json)
+    + Headers
+
+            Authorization: Basic base64(cctoa:ttrobo)
+
++ Response 201 (application/json)
+
+        [
+            "cool", "cc", "tbo"
+        ]

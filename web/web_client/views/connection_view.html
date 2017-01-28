@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>RSS Feed Aggregator - Connexion</title>
+
+    <meta name="description" content="RFA - Web client interacting with API" />
+    <meta name="keywords" content="RFA - Web Client" />
+    <meta name="author" content="Gaëtan Rolé-Dubruille" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="icon" href="/img/rss.ico" />
+    <link rel="stylesheet" href="/css/connection_view.css" />
+
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+</head>
+
+<body>
+<div class="login-page">
+    <img style="display: block; margin: 0 auto; " src="/img/rss.png" width="70" height="70"/>
+    <br><br>
+    <div class="form">
+        <form class="login-form" action="/login" method="post" enctype="multipart/form-data">
+            <input type="text" id="name" name="name" placeholder="Name" />
+            <br />
+            <input type="password" id="password" name="password" placeholder="Password" />
+            <br />
+            <button type="submit" value="Login">Login</button>
+            <p class="message">Not registered ? <a href="/signup">Create an account</a></p>
+        </form>
+    </div>
+</div>
+
+<footer>
+<p class="subtitle">RSS Feed Aggregator - Web client</p>
+</footer>
+
+</body>
+
+</html>
