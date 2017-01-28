@@ -1,0 +1,21 @@
+{
+  "name": "local_api",
+  "version": "1.0.0",
+  "description": "Simple local api to test web client (using Node.js, Express)",
+  "author": "Gaetan Role",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "mysql": "^2.9.0"
+  },
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GaetanRole/RSS-Feed-Aggregator.git"
+  }
+}
