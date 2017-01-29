@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
+body {
+    background: url('/img/connection.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'Open Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
 .login-page {
     width: 360px;
     padding: 8% 0 0;
@@ -93,13 +103,4 @@
     text-transform: capitalize;
     font-weight: bold;
     font-size: 13px;
-}
-body {
-    background: url('/img/connection.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    font-family: 'Open Sans', sans-serif;
-    -webkit-font-smoothing: antialiased;
 }

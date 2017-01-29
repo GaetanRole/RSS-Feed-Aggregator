@@ -11,7 +11,8 @@
     "body-parser": "1.8",
     "errorhandler": "*",
     "express-session": "*",
-    "multer": "0.1.*"
+    "multer": "0.1.*",
+    "ejs":"*"
   },
   "main": "server.js",
   "devDependencies": {},

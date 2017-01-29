@@ -1,9 +1,9 @@
 /* NPM modules */
-var fs = require('fs');
 var util = require('util');
 var pathModule = require("path");
 var path = pathModule.join(__dirname, '../', 'views/');
 
+/* Form class */
 function Form() {
 
     // Form : Login page
@@ -13,10 +13,15 @@ function Form() {
 
     // Form : Login POST
     this.processLogin = function(req, res) {
+
         if (!req.body.name || !req.body.password)
             res.redirect('/error');
-        console.log("USERNAME :" + req.body.name);
-        console.log("PASSWORD :" + req.body.password);
+
+        console.log("User_name : " + req.body.name);
+        console.log("User_password : " + req.body.password);
+
+        req.session.user_name = req.body.name;
+        res.redirect('/home')
     };
 
     // Form : Signup page
@@ -28,9 +33,11 @@ function Form() {
     this.processSignup = function(req, res) {
         if (!req.body.name || !req.body.password || !req.body.email)
             res.redirect('/error');
+
         console.log("USERNAME :" + req.body.name);
         console.log("PASSWORD :" + req.body.password);
         console.log("EMAIL :" + req.body.email);
+
     };
 }
 
